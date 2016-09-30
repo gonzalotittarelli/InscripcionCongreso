@@ -1,0 +1,51 @@
+body {
+	background-image: url(../images/cars.png);
+}
+
+
+.navbar-custom {
+	background-color: #F2F2F2;
+    color:#8D1D1F;
+  	border-radius:0;
+    min-height:auto;
+}
+  
+.navbar-custom .navbar-nav > li > a {
+  	color:#8D1D1F;
+  	padding-left:25px;
+  	padding-right:25px;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #8D1D1F;
+	background-color:transparent;
+}
+      
+.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #808080;
+    color:white;
+}
+      
+.navbar-custom .navbar-brand {
+   color:#eeeeee;
+   padding:20px;
+}
+
+.navbar-custom .navbar-toggle,
+.navbar-custom .nav .open>a, .navbar-custom .nav .open>a:hover, .navbar-custom .nav .open>a:focus {
+	text-decoration: none;
+    background-color: #808080;
+    color:white;
+}
+
+.navbar-custom .icon-bar {
+   border: 1px solid #fff;              
+}
+
+/*-- change navbar dropdown color --*/
+.navbar-custom .navbar-nav .open .open>a:hover .dropdown-menu>li>a .navbar-custom .navbar-nav .open .dropdown-menu {
+    color:#F5F5F5;
+    background-color: #808080;
+}

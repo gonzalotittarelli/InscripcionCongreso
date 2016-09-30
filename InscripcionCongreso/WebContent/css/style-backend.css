@@ -1,0 +1,138 @@
+body {
+	background-image: url(../images/cross_scratches.png);
+}
+
+.navbar-custom {
+	background-color: #F2F2F2;
+    color:#8D1D1F;
+  	border-radius:0;
+    min-height:auto;
+}
+  
+.navbar-custom .navbar-nav > li > a {
+  	color:#8D1D1F;
+  	padding-left:25px;
+  	padding-right:25px;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #8D1D1F;
+	background-color:transparent;
+}
+      
+.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #808080;
+    color:white;
+}
+      
+.navbar-custom .navbar-brand {
+   color:#eeeeee;
+   padding:20px;
+}
+
+.navbar-custom .navbar-toggle,
+.navbar-custom .nav .open>a, .navbar-custom .nav .open>a:hover, .navbar-custom .nav .open>a:focus {
+	text-decoration: none;
+    background-color: #808080;
+    color:white;
+}
+
+.navbar-custom .icon-bar {
+   border: 1px solid #fff;              
+}
+
+/*-- change navbar dropdown color --*/
+.navbar-custom .navbar-nav .open .open>a:hover .dropdown-menu>li>a .navbar-custom .navbar-nav .open .dropdown-menu {
+    color:#F5F5F5;
+    background-color: #808080;
+}
+
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+    color:black;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
+
+.ui-jqgrid .ui-pg-input{
+   	height: 20px !important;
+}
+.ui-jqgrid .ui-pg-selbox{
+	height: 20px !important;
+}
+.ui-jqgrid tr.ui-row-ltr td{
+	text-align:center !important;
+	font-weight:bold !important;
+	font-size:10pt !important;
+	text-transform: capitalize;
+}
+.ui-jqgrid .ui-jqgrid-htable th div{
+	font-size:10pt !important;
+}
+.ui-jqgrid .ui-jqgrid-title{
+	font-size:11pt !important;
+}

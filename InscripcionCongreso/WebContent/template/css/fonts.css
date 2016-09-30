@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url(../vendor/fonts/font_relaway/Relaway-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Bubbler One';
+    src: url(../vendor/fonts/font_bubbler_one/BubblerOne-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url(../vendor/fonts/font_josefin_sans/JosefinSans-Light.ttf) format('truetype');
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.custom.i18n.resources" value="i18n.i18n"></constant>
+	<package name="default" namespace="/" extends="struts-default,json-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		<global-results>
+			<result name="error" type="tiles">error</result>
+		</global-results>
+		<action name="Inicio" class="inicioAction">
+			<result name="success" type="tiles">inicio</result>
+		</action>
+	</package>
+</struts>
