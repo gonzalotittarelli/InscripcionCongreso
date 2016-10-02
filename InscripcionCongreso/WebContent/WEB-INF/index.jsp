@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta HTTP-EQUIV="Refresh" CONTENT="0;URL=Inicio">
+	<meta HTTP-EQUIV="Refresh" CONTENT="0;URL=inicio">
 </head>
 <body>
 </body>

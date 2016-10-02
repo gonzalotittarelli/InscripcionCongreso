@@ -414,3 +414,7 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #222222;
 }
+#nav-pill-own .active a, #nav-pill-own a:hover, #nav-pill-own a:focus {
+    background-color: #f05f40 !important;
+    color: white;
+}

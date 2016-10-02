@@ -1,173 +1,183 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<style>.form-control {font-size: 20px !important;}</style>
 <div class="col-md-12" style="margin-top:3%;" role="main">
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<form id="" class="form-horizontal" action="GuardarRecorrido" method="POST">
-	            <ul class="nav nav-pills">
-	                <li><a href="#rutaMapa" data-toggle="tab"><s:property value="getText('altarecorrido.rutamapa')" /></a></li>
-	                <li><a href="#datos" data-toggle="tab"><s:property value="getText('altarecorrido.datos')" /></a></li>
-	                <li><a href="#confirmacion" data-toggle="tab"><s:property value="getText('altarecorrido.confirmacion')" /></a></li>
+			<form id="guardarInscripcionForm" class="form-horizontal" action="guardarInscripcion" method="POST">
+				<input type="hidden" name="autores_secundarios" value="" id="autores_secundarios">
+	            <ul id="nav-pill-own" class="nav nav-pills"  style="font-family: 'Josefin Sans';font-size: 20px">
+	                <li><a href="#datos" data-toggle="tab">Datos Interesado</a></li>
+	                <li><a href="#trabajo" data-toggle="tab">Trabajo</a></li>
+	                <li><a href="#resumen" data-toggle="tab">Resumen Trabajo</a></li>
+	                <li><a href="#confirmacion" data-toggle="tab">Confirmacion</a></li>
 	            </ul>				
 	            <div class="tab-content">
 	            	<!-- Primer tab -->
-	                <div class="tab-pane active" id="rutaMapa">
+	                <div class="tab-pane active" id="datos"  style="font-family: 'Josefin Sans';font-size: 20px; margin-bottom: 2em;">
 	                	<div class="col-md-12" style="margin-top:2%; margin-bottom:2%;">
-			                <s:if test="fieldErrors.containsKey('direccion_origen')">
-					        	<small class="text-danger"><s:property value="fieldErrors.get('direccion_origen').get(0)"/></small>
+			                <s:if test="fieldErrors.containsKey('autor_principal')">
+					        	<small class="text-danger"><s:property value="fieldErrors.get('autor_principal').get(0)"/></small>
 					        </s:if>
-					        <s:if test="fieldErrors.containsKey('direccion_destino')">
-					        	<small class="text-danger"><s:property value="fieldErrors.get('direccion_destino').get(0)"/></small>
+					        <s:if test="fieldErrors.containsKey('autor_secundario')">
+					        	<small class="text-danger"><s:property value="fieldErrors.get('autor_secundario').get(0)"/></small>
 					        </s:if>
-					        <s:if test="fieldErrors.containsKey('fecha_recorrido')">
-					        	<small class="text-danger"><s:property value="fieldErrors.get('fecha_recorrido').get(0)"/></small>
+					        <s:if test="fieldErrors.containsKey('titulo_trabajo')">
+					        	<small class="text-danger"><s:property value="fieldErrors.get('titulo_trabajo').get(0)"/></small>
 					        </s:if>
-					        <s:if test="fieldErrors.containsKey('hora_partida')">
-					        	<small class="text-danger"><s:property value="fieldErrors.get('hora_partida').get(0)"/></small>
+					        <s:if test="fieldErrors.containsKey('resumen_trabajo')">
+					        	<small class="text-danger"><s:property value="fieldErrors.get('resumen_trabajo').get(0)"/></small>
 					        </s:if>
-					        <s:if test="fieldErrors.containsKey('hora_regreso')">
-					        	<small class="text-danger"><s:property value="fieldErrors.get('hora_regreso').get(0)"/></small>
+					        <s:if test="fieldErrors.containsKey('tema_trabajo')">
+					        	<small class="text-danger"><s:property value="fieldErrors.get('tema_trabajo').get(0)"/></small>
 					        </s:if>
-					        <s:if test="fieldErrors.containsKey('asientos_disponibles')">
-					        	<small class="text-danger"><s:property value="fieldErrors.get('asientos_disponibles').get(0)"/></small>
+					        <s:if test="fieldErrors.containsKey('presentacion_trabajo')">
+					        	<small class="text-danger"><s:property value="fieldErrors.get('presentacion_trabajo').get(0)"/></small>
 					        </s:if>
-					        <s:if test="fieldErrors.containsKey('tipo_recorrido')">
-					        	<small class="text-danger"><s:property value="fieldErrors.get('tipo_recorrido').get(0)"/></small>
+					        <s:if test="fieldErrors.containsKey('correo_personal')">
+					        	<small class="text-danger"><s:property value="fieldErrors.get('correo_personal').get(0)"/></small>
 					        </s:if>
-							<div class="form-group">
-								<div class="col-md-5">
-									<label for="origen">A</label>
-									<input id="origen" class="form-control" type="text" placeholder="<s:property value="getText('altarecorrido.form.origen')" />" name="origen" value="">
+					        <s:if test="fieldErrors.containsKey('correo_gmail')">
+					        	<small class="text-danger"><s:property value="fieldErrors.get('correo_gmail').get(0)"/></small>
+					        </s:if>
+							<div class="form-group row">
+								<label for="nombre" class="col-xs-2 col-form-label">Nombre</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="nombre" name="nombre" style='text-transform:lowercase'>
 								</div>
-       							<div class="col-md-5">
-       								<label for="destino">B</label>
-       								<div>
-        								<select class="selectpicker" data-width="100%" data-size="5" data-live-search="true" id="eventos" data-none-results-text="<s:property value="getText('select.no_existe')" />">
-        									<option value=""><s:property value="getText('altarecorrido.form.evento.select')" /></option>
-							                <s:iterator value="eventos" var="evento">
-							                	<option value='{"id": <s:property value="#evento.id"/>, "dir": "<s:property value="#evento.direccion"/>", "fecha": "<s:date name="#evento.fecha" format="%{getText('date.format')}" />" }'><s:property value="#evento.nombre"/></option>
-							                </s:iterator>
-									        </select>
-								        </div>
-       								<input id="destino" class="form-control" type="text" placeholder="<s:property value="getText('altarecorrido.form.destino')" />" name="destino">
-       								<a href="#" id="c_evento"></a>
-       								
-       								<input type="hidden" id="con_evento" value="<s:property value="getText('altarecorrido.form.con_evento')"/>" />
-       								<input type="hidden" id="sin_evento" value="<s:property value="getText('altarecorrido.form.sin_evento')"/>" />
-       								
-       								<input type="hidden" id="toggle" value="si">
-       								<input type="hidden" name="eventoId" id="eventoId">
-       							</div>
-       							<div class="col-md-2" style="margin-top:2.3%;">
-       								<input type="button" class="btn btn-info-pool " value="<s:property value="getText('altarecorrido.form.buscar_ruta')"/>" id="buscarRuta">
-       							</div>
-					        </div>
+							</div>
+							<div class="form-group row">
+								<label for="apellido" class="col-xs-2 col-form-label">Apellido</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="apellido" name="apellido" style='text-transform:lowercase'>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="correo" class="col-sm-2 col-form-label">Correo Personal</label>
+								<div class="col-sm-10">
+									<input type="email" class="form-control" id="correo" name="correo">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="correo_gmail" class="col-sm-2 col-form-label">Correo Gmail</label>
+								<div class="col-sm-10">
+									<div class="input-group">
+										<input type="text" class="form-control" id="correo_gmail" name="correo_gmail">
+										<div class="input-group-addon">@gmail.com</div>
+									</div>
+								</div>
+							</div>										        
 				        </div>
-				        <div class="form-group">
-      							<div class="col-md-12" style="margin-top:2%; margin-bottom:2%;">
-		                        <input type="hidden" name="ruta" id="ruta">
-		                        <s:if test="fieldErrors.containsKey('ruta')">
-			            			<small class="text-danger"><s:property value="fieldErrors.get('ruta').get(0)"/></small>
-			            		</s:if>
-		                        <div id="contenedor_mapa">
-						            <div id="mapa"></div>
-							    </div>
-						    </div>
-					    </div>
 	                </div>
-		            <!-- Segundo tab -->
-	                <div class="tab-pane" id="datos">
+		            <!-- Segundo tab Trabajo-->
+	                <div class="tab-pane" id="trabajo"  style="font-family: 'Josefin Sans';font-size: 20px; margin-bottom: 2em;">
 	                	<div class="col-md-12" style="margin-top:2.5%;">
-							<div class="form-group">
-			                   <div class="col-md-5">
-									<div class="form-group">
-							            <label for="nombre"><s:property value="getText('altarecorrido.form.dirorigen')"/></label>
-							            <input type="text" class="form-control" name="direccionOrigen" readonly id="dirOrigen"/>
-							       </div>
-						        </div>									        
-						        <div class="col-md-5 col-md-offset-1">
-						          	<div class="form-group">
-							            <label for="nombre"><s:property value="getText('altarecorrido.form.dirdestino')"/></label>
-							            <input type="text" class="form-control" name="direccionDestino" readonly id="dirDestino"/>
-							        </div>
+							<div class="form-group row">
+								<label for="titulo_trabajo" class="col-xs-2 col-form-label">Titulo</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="titulo_trabajo" name="titulo_trabajo" style='text-transform:lowercase'>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="tema_trabajo" class="col-xs-2 col-form-label">Tema</label>
+								<div class="col-sm-10">
+									<select class="form-control" id="tema_trabajo" name="tema_trabajo">
+		    							<option value=""></option>
+						                <option value="CLOUD">Cloud Computing</option>
+						                <option value="WS">Web Service</option>
+						                <option value="BPM">Business process management</option>
+						                <option value="SOA">Service Oriented Architecture</option>
+							        </select>
 						        </div>
-							</div>        
-						</div>  
-						<div class="col-md-12">
-						        <div class="col-md-2 col-md-offset-1" id="fecha_de_recorrido"> 
-									<div class="form-group">
-										<label><s:property value="getText('altarecorrido.form.fecha')"/></label>							        							
-										<input type='text' class="form-control" name="fechaRecorrido" id="fechaRecorrido" readonly  maxlength="10"/>
-									</div>
-								</div>
-								<div class="col-md-2 col-md-offset-1">
-									<div class="form-group">
-										<label><s:property value="getText('altarecorrido.form.horaida')"/></label>
-										<input type='text' class="form-control" name="horaPartida" id="horaPartida" readonly maxlength="8"/>
-									</div>
-								</div>
-								<div class="col-md-2 col-md-offset-1">
-									<div class="form-group">
-										<label><s:property value="getText('altarecorrido.form.horavuelta')"/> <input type="checkbox" id="vuelvo"></label>
-										<input class="form-control" name="horaRegreso" id="horaRegreso" type="hidden" value="-" readonly maxlength="8"/>
-									</div>
-								</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-					            <label for="nombre"><s:property value="getText('altarecorrido.form.asientos')"/></label>
-					            <input type="number" class="form-control" name="asientosDisponibles" min="1" max="10" value="1"/>
 					        </div>
-				        </div>
-						<div class="col-md-12">
-							<div class="form-group" id="tipo_de_recorrido">
-								<label class="radio-inline"><input type="radio" name="tipoRecorrido" value="puntual" checked/><s:property value="getText('altarecorrido.form.puntual')"/></label>
-					            <label class="radio-inline"><input type="radio" name="tipoRecorrido" value="diario" /><s:property value="getText('altarecorrido.form.diario')"/></label>
-					            <label class="radio-inline"><input type="radio" name="tipoRecorrido" value="periodico"/><s:property value="getText('altarecorrido.form.periodico')"/></label>
-					       </div>
-				        </div>
-				        <div class="row" id="lista-dias"></div>
-				        <input type="hidden" value="<s:property value="getText('dia.LUNES')"/>" id="lunes">
-				        <input type="hidden" value="<s:property value="getText('dia.MARTES')"/>" id="martes">
-				        <input type="hidden" value="<s:property value="getText('dia.MIERCOLES')"/>" id="miercoles">
-				        <input type="hidden" value="<s:property value="getText('dia.JUEVES')"/>" id="jueves">
-				        <input type="hidden" value="<s:property value="getText('dia.VIERNES')"/>" id="viernes">
+							<div class="form-group row">
+								<label for="tipo_presentacion" class="col-xs-2 col-form-label" style="font-size:19px">Tipo de Presentacion</label>
+								<div class="col-sm-10">
+									<select class="form-control" id="tipo_presentacion" name="tipo_presentacion">
+		    							<option value=""></option>
+						                <option value="POSTER">Poster</option>
+						                <option value="CONFERENCIA">Conferencia</option>
+							        </select>
+						        </div>
+					        </div>
+					        <div class="form-group row">
+					        	<label for="tipo_presentacion" class="col-xs-2 col-form-label" style="font-size:19px">Autores Secundarios</label>
+					        	<div class="col-sm-10">
+						        	<div class="panel panel-default">
+										<div class="panel-body">
+											<div class="col-md-12">
+												<div class="form-group">
+													<div class="col-md-5">
+														<label for="nombre_secundario">Nombre</label>
+														<input id="nombre_secundario" class="form-control" type="text" style='text-transform:lowercase'>
+													</div>
+													<div class="col-md-5">
+														<label for="apellido_secundario">Apellido</label>
+														<input id="apellido_secundario" class="form-control" type="text" style='text-transform:lowercase'>
+													</div>												
+				        							<div class="col-md-2" style="margin-top:3.3%;">
+				        								<a id="añadirSecundario" ><i class="fa fa-plus"></i> </a>
+				        							</div>
+										        </div>
+										        <div class="form-group" id="secundarios">
+										        	<ul class="nav nav-pills">												
+													</ul>
+													<input type="hidden" id="apellidos_nombres_secundarios" name="apellidos_nombres_secundarios" />
+										        </div>										
+									        </div>									
+										</div>
+									</div>
+								</div>
+							</div>				        	        
+						</div>
 				     </div>
-					<!-- Tercer Tab -->
-					<div class="tab-pane" id="confirmacion">
-						<div class="col-md-6">
-           					<label><s:property value="getText('altarecorrido.form.dirorigen')"/></label>
-           					<div class="well well-sm" id="cDireccionOrigen"></div>
-	        			</div>
-						<div class="col-md-6">
-           					<label><s:property value="getText('altarecorrido.form.dirdestino')"/></label>
-           					<div class="well well-sm" id="cDireccionDestino"></div>
-	        			</div>
-						<div class="col-md-6">
-           					<label><s:property value="getText('altarecorrido.form.fecha')"/></label>
-           					<div class="well well-sm" id="cFecha"></div>
-	        			</div>
-						<div class="col-md-6">
-           					<label><s:property value="getText('altarecorrido.form.horaida')"/></label>
-           					<div class="well well-sm" id="cHoraIda"></div>
-	        			</div>
-						<div class="col-md-6">
-           					<label><s:property value="getText('altarecorrido.form.horavuelta')"/></label>
-           					<div class="well well-sm" id="cHoraVuelta"></div>
-	        			</div>
-						<div class="col-md-6">
-           					<label><s:property value="getText('altarecorrido.form.asientos')"/></label>
-           					<div class="well well-sm" id="cAsientos"></div>
-	        			</div>
+					<!-- Tercer Tab Resumen-->
+					<div class="tab-pane" id="resumen"  style="font-family: 'Josefin Sans';font-size: 20px">
 						<div class="col-md-12" >
-							<label><s:property value="getText('altarecorrido.form.dias')"/></label>
-							<div class="well well-sm" id="cDias"></div>
+							<textarea id="resumen" class="form-control" rows="15" cols="50" name="resumen" style="resize: none; margin-bottom: 2em;"></textarea>
 	        			</div>		        							        							        					        			
 					</div>
+					<!-- Cuarto Tab Confirmacion-->
+					<div class="tab-pane" id="confirmacion"  style="font-family: 'Josefin Sans';font-size: 15px; margin-bottom: 2em;">
+						<div class="col-md-6">
+           					<label>Nombre</label>
+           					<div class="well well-sm" id="cNombre" style='text-transform:lowercase'></div>
+	        			</div>
+						<div class="col-md-6">
+           					<label>Apellido</label>
+           					<div class="well well-sm" id="cApellido" style='text-transform:lowercase'></div>
+	        			</div>
+						<div class="col-md-6">
+           					<label>Correo Personal</label>
+           					<div class="well well-sm" id="cCorreoPersonal"></div>
+	        			</div>
+						<div class="col-md-6">
+           					<label>Correo Gmail</label>
+           					<div class="well well-sm" id="cCorreoGmail"></div>
+	        			</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<div class="col-md-4">
+									<label>Titulo</label><div class="well well-sm" id="cTitulo" style='text-transform:lowercase'></div>
+								</div>
+								<div class="col-md-4">
+									<label>Tema</label><div class="well well-sm" id="cTema"></div>
+								</div>												
+       							<div class="col-md-4">
+       								<label>Tipo de Presentacion</label><div class="well well-sm" id="cPresentacion"></div>
+       							</div>
+					        </div>										
+				        </div>	        			
+						<div class="col-md-12" >
+							<label>Autores Secundarios</label>
+							<ul class="nav nav-pills" id="cAutoresSecundarios">												
+							</ul>
+	        			</div>    							        							        					        			
+					</div>					
 	                <!-- Botones Atras/Siguiente -->
-	                <ul class="pager wizard">
-	                    <li class="previous"><a href="javascript: void(0);"><i class="fa fa-arrow-left fa-lg"></i> </a></li>
-	                    <li class="next"><a href="javascript: void(0);"><i class="fa fa-arrow-right fa-lg"></i> </a></li>
+	                <ul class="pager wizard" style="font-family: 'Josefin Sans';font-size: 16px">
+	                    <li class="previous"><a href="javascript: void(0);"><i class="fa fa-arrow-left"></i> </a></li>
+	                    <li class="next"><a href="javascript: void(0);"><i class="fa fa-arrow-right"></i> </a></li>
 	                </ul>
 	            </div>
 	        </form>

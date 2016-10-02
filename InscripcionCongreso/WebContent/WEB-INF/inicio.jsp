@@ -36,6 +36,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+	<link rel="stylesheet" href="template/vendor/bootstrap/bootstrap-select/dist/css/bootstrap-select.min.css" />
 </head>
 
 <body id="page-top">
@@ -188,9 +189,14 @@
     <!-- Theme JavaScript -->
     <script src="template/js/creative.min.js"></script>
     
-    <script src="formvalidation/dist/js/formValidation.min.js"></script>
-	<script src="formvalidation/dist/js/framework/bootstrap.min.js"></script>   
-	<script src="js/jquery.bootstrap.wizard.min.js"></script>
+    <script src="template/vendor/formvalidation/dist/js/formValidation.min.js"></script>
+	<script src="template/vendor/formvalidation/dist/js/framework/bootstrap.min.js"></script>   
+	<script src="template/js/jquery.bootstrap.wizard.min.js"></script>
+	
+	<script src="js/validateAltaInscripcion.js" ></script>
+	<script src="js/altaInscripcion.js" ></script>
+	<script src="template/vendor/bootstrap/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+	
 
 </body>
 

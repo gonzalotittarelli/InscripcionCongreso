@@ -12,4 +12,7 @@
 	<definition name="inicio" template="WEB-INF/inicio.jsp">
 		<put-attribute name="titulo" value="Bienvenido" />
 	</definition>
+	<definition name="exito" template="WEB-INF/exito.jsp">
+		<put-attribute name="titulo" value="Trabajo Agregado" />
+	</definition>
 </tiles-definitions>

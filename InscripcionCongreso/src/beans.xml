@@ -21,5 +21,7 @@
 	<context:annotation-config/>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
-	<bean id="inicioAction" class="actions.InicioAction" scope="prototype"/>			
+	<bean id="inicioAction" class="actions.InicioAction" scope="prototype"/>
+	<bean id="inscripcionAction" class="actions.InscripcionAction" scope="prototype">
+	</bean>		
 </beans>
