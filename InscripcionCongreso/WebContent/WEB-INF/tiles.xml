@@ -8,7 +8,6 @@
 	<definition name="error" template="WEB-INF/error.jsp">
 		<put-attribute name="titulo" value="Error" />
 	</definition>
-
 	<definition name="inicio" template="WEB-INF/inicio.jsp">
 		<put-attribute name="titulo" value="Bienvenido" />
 	</definition>

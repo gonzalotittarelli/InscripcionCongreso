@@ -39,9 +39,11 @@ public class Trabajo implements Serializable{
 	private String resumen;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(name = "TEMA")
 	private Temas tema;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(name = "TIPO_PRESENTACION")
 	private TiposPresentacion tipoPresentacion;
 	
 	@Column(name = "APROBADO")

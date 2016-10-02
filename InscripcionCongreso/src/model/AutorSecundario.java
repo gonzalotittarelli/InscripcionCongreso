@@ -28,7 +28,7 @@ public class AutorSecundario implements Serializable{
 	private String apellido;
 	
 	@ManyToOne
-	@JoinColumn(name="AUTOR_SECUNDARIO_FK")
+	@JoinColumn(name="TRABAJO_FK")
 	private Trabajo trabajo;
 	
 	public AutorSecundario(){

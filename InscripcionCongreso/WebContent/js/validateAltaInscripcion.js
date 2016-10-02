@@ -72,6 +72,20 @@ function resumen(){
 	});
 }
 
+function clean(){
+	var nombre = ($("#nombre").val()).toLowerCase();
+	var apellido = ($("#apellido").val()).toLowerCase();
+	var correo_gmail = $("#correo_gmail").val();
+	var titulo_trabajo = ($("#titulo_trabajo").val()).toLowerCase();
+	$("#secundarios ul li input").each(function(i){
+		$(this).val(($(this).val()).toLowerCase());
+	});
+	$("#nombre").val(nombre);
+	$("#apellido").val(apellido);
+	$("#correo_gmail").val(correo_gmail+"@gmail.com");
+	$("#titulo_trabajo").val(titulo_trabajo);
+}
+
 $(document).ready(function() {
 	$("textarea").textareaCounter({ limit: 200 });
 	
@@ -177,6 +191,7 @@ $(document).ready(function() {
                 		string+=$(this).val()+",";
                 	});
                 	$("#apellidos_nombres_secundarios").val(string);
+                	clean();
                     $('#guardarInscripcionForm').formValidation('defaultSubmit');
                 }
 
