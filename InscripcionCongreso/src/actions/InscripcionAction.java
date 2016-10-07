@@ -1,5 +1,11 @@
 package actions;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 public class InscripcionAction extends ActionSupport{
@@ -15,16 +21,122 @@ public class InscripcionAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
-//	public void validate(){
-//		validar_direccion_origen();
-//		validar_direccion_destino();
-//		validar_hora_partida();
-//		validar_hora_regreso();
-//		validar_fecha_recorrido();
-//		validar_asientos_disponibles();
-//		validar_ruta();
-//		validar_tipo();
-//	}
+	public void validate(){
+		validar_nombre();
+		validar_apellido();
+		validar_correo();
+		validar_correo_gmail();
+		validar_titulo_trabajo();
+		validar_tema_trabajo();
+		validar_tipo_presentacion();
+	}
+	
+	private void validar_titulo_trabajo(){
+		if(titulo_trabajo != null){
+			if(titulo_trabajo.equals(""))
+				addFieldError("titulo_trabajo", "Ingrese un titulo del trabajo");
+			else{
+				if(titulo_trabajo.length() > 50)
+					addFieldError("titulo_trabajo", "El titulo del trabajo debe tener un maximo de 50 caracteres");
+			}
+		}else
+			addFieldError("titulo_trabajo", "Ingrese un titulo del trabajo");
+	}
+	
+	private void validar_tema_trabajo(){
+		
+	}
+	
+	private void validar_tipo_presentacion(){
+		
+	}
+	
+	private boolean direccionValida(String email) {
+		   boolean result = true;
+		   try {
+		      InternetAddress emailAddr = new InternetAddress(email);
+		      emailAddr.validate();
+		   } catch (AddressException ex) {
+		      result = false;
+		   }
+		   return result;
+	}
+	
+	
+	private void validar_correo_gmail(){
+		if(correo_gmail != null){
+			if(correo_gmail.equals(""))
+				addFieldError("correo_gmail","Ingrese un correo de gmail");
+			else{
+				 Pattern pattern = Pattern.compile("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,3})");
+				 Matcher matcher = pattern.matcher(correo);
+				 if(!matcher.matches()){
+					 addFieldError("correo_gmail","La direccion de correo no es valida");
+				}else{
+					if(!direccionValida(correo_gmail))
+						addFieldError("correo_gmail","Ingrese una direccion de correo de gmail valida");
+				}
+			}
+		}else
+			addFieldError("correo_gmail", "Ingrese un correo de gmail");
+	}
+	
+	private void validar_correo(){
+		if(correo != null){
+			if(correo.equals(""))
+				addFieldError("correo","Ingrese un correo");
+			else{
+				 Pattern pattern = Pattern.compile("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,3})");
+				 Matcher matcher = pattern.matcher(correo);
+				 if(!matcher.matches()){
+					 addFieldError("correo","La direccion de correo no es valida");
+				 }else{
+					 if(!direccionValida(correo))
+							addFieldError("correo","Ingrese una direccion de correo valida");
+				 }
+			}
+		}else
+			addFieldError("correo", "Ingrese un correo");
+	}
+	
+	private void validar_nombre(){
+		if(nombre != null){
+			if(nombre.equals(""))
+				addFieldError("autor_principal", "Ingrese un nombre");
+			else{
+				if(nombre.length() > 100)
+					addFieldError("autor_principal", "El nombre debe tener un maximo de 100 caracteres");
+				else{
+					Pattern pattern = Pattern.compile("^[a-zA-ZñÑÁÉÍÓÚáéíóú\\s]+$");
+					Matcher matcher = pattern.matcher(nombre);
+					if(!matcher.matches())
+						addFieldError("autor_principal",getText("El nombre solo puede tener letras y espacios"));
+					
+				}
+			}
+		}else
+			addFieldError("autor_principal", "Ingrese un nombre");
+		
+	}
+	
+	private void validar_apellido(){
+		if(apellido != null){
+			if(apellido.equals(""))
+				addFieldError("autor_principal", "Ingrese un apellido");
+			else{
+				if(apellido.length() > 100)
+					addFieldError("autor_principal", "El apellido debe tener un maximo de 100 caracteres");
+				else{
+					Pattern pattern = Pattern.compile("^[a-zA-ZñÑÁÉÍÓÚáéíóú\\s]+$");
+					Matcher matcher = pattern.matcher(apellido);
+					if(!matcher.matches())
+						addFieldError("autor_principal",getText("El apellido solo puede tener letras y espacios"));
+					
+				}
+			}
+		}else
+			addFieldError("autor_principal", "Ingrese un nombre");
+	}
 	
 //	private void validar_direccion_origen(){
 //		if(recorrido.getDireccionOrigen() != null){

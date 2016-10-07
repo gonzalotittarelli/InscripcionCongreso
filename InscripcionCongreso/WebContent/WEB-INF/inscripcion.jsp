@@ -34,8 +34,8 @@
 					        <s:if test="fieldErrors.containsKey('presentacion_trabajo')">
 					        	<small class="text-danger"><s:property value="fieldErrors.get('presentacion_trabajo').get(0)"/></small>
 					        </s:if>
-					        <s:if test="fieldErrors.containsKey('correo_personal')">
-					        	<small class="text-danger"><s:property value="fieldErrors.get('correo_personal').get(0)"/></small>
+					        <s:if test="fieldErrors.containsKey('correo')">
+					        	<small class="text-danger"><s:property value="fieldErrors.get('correo').get(0)"/></small>
 					        </s:if>
 					        <s:if test="fieldErrors.containsKey('correo_gmail')">
 					        	<small class="text-danger"><s:property value="fieldErrors.get('correo_gmail').get(0)"/></small>

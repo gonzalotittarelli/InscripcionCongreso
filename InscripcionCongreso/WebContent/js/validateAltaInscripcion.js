@@ -108,10 +108,10 @@ $(document).ready(function() {
                         notEmpty: {
                         },
                         stringLength: {
-                            max: 50,
+                            max: 100,
                         },
                         regexp: {
-                            regexp: /^[a-zA-ZñÑÁÉÍÓÚáéíóú\d\s]+$/,
+                            regexp: /^[a-zA-ZñÑÁÉÍÓÚáéíóú\s]+$/,
                         }
                     }
                 },
@@ -120,7 +120,7 @@ $(document).ready(function() {
                         notEmpty: {
                         },
                         stringLength: {
-                            max: 50,
+                            max: 100,
                         },
                         regexp: {
                             regexp: /^[a-zA-ZñÑÁÉÍÓÚáéíóú\d\s]+$/,
