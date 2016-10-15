@@ -31,8 +31,8 @@
 					        <s:if test="fieldErrors.containsKey('tema_trabajo')">
 					        	<small class="text-danger"><s:property value="fieldErrors.get('tema_trabajo').get(0)"/></small>
 					        </s:if>
-					        <s:if test="fieldErrors.containsKey('presentacion_trabajo')">
-					        	<small class="text-danger"><s:property value="fieldErrors.get('presentacion_trabajo').get(0)"/></small>
+					        <s:if test="fieldErrors.containsKey('tipo_presentacion')">
+					        	<small class="text-danger"><s:property value="fieldErrors.get('tipo_presentacion').get(0)"/></small>
 					        </s:if>
 					        <s:if test="fieldErrors.containsKey('correo')">
 					        	<small class="text-danger"><s:property value="fieldErrors.get('correo').get(0)"/></small>
@@ -61,10 +61,8 @@
 							<div class="form-group row">
 								<label for="correo_gmail" class="col-sm-2 col-form-label">Correo Gmail</label>
 								<div class="col-sm-10">
-									<div class="input-group">
-										<input type="text" class="form-control" id="correo_gmail" name="correo_gmail">
-										<div class="input-group-addon">@gmail.com</div>
-									</div>
+									<input type="text" class="form-control" id="correo_gmail" name="correo_gmail">
+									<small class="form-text text-muted">Ingrese su correo de gmail</small>
 								</div>
 							</div>										        
 				        </div>
@@ -168,7 +166,7 @@
        							</div>
 					        </div>										
 				        </div>	        			
-						<div class="col-md-12" >
+						<div class="col-md-12" style="margin-bottom: 1em">
 							<label>Autores Secundarios</label>
 							<ul class="nav nav-pills" id="cAutoresSecundarios">												
 							</ul>

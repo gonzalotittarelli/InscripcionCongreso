@@ -14,13 +14,12 @@
 
 	<title><tiles:insertAttribute name='titulo' ignore='true' /></title>
 
-    <!-- Bootstrap Core CSS -->
+	   <!-- Bootstrap Core CSS -->
     <link href="template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="template/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href="template/css/fonts.css" rel="stylesheet" type='text/css'>
 
     <!-- Plugin CSS -->
@@ -28,7 +27,16 @@
 
     <!-- Theme CSS -->
     <link href="template/css/creative.min.css" rel="stylesheet">
+    
+	 <!-- jQuery -->
+    <script src="template/vendor/jquery/jquery.min.js"></script>
 
+  	<link href="template/vendor/bootstrap/css/pnotify.custom.min.css" rel="stylesheet">
+    <script src="template/vendor/bootstrap/js/pnotify.custom.min.js"></script>
+
+	<script src="template/vendor/bootstrap/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    
+	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -37,6 +45,7 @@
     <![endif]-->
 
 	<link rel="stylesheet" href="template/vendor/bootstrap/bootstrap-select/dist/css/bootstrap-select.min.css" />
+	
 </head>
 
 <body id="page-top">
@@ -76,6 +85,12 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
+            	<s:if test="hasActionMessages()">
+            		<input type="hidden" id="success" value="<s:property value="actionMessages.get(0)"/>" />
+				</s:if>
+				<s:if test="fieldErrors.size() > 0">
+					<input type="hidden" id="error" value="si" />
+				</s:if>
                 <h1 id="homeHeading">Congreso de Tecnología e Informática</h1>
                 <hr>
                 <p style="font-family: 'Josefin Sans'; font-size: 34px">Business process management (BPM) &amp; Cloud Computing</p>
@@ -174,13 +189,9 @@
             </div>
         </div>
     </section>
-
-    <!-- jQuery -->
-    <script src="template/vendor/jquery/jquery.min.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="template/vendor/bootstrap/js/bootstrap.min.js"></script>
-
+            
     <!-- Plugin JavaScript -->
     <script src="template/vendor/jquery/jquery.easing.min.js"></script>
     <script src="template/vendor/scrollreveal/scrollreveal.min.js"></script>
@@ -188,16 +199,11 @@
 
     <!-- Theme JavaScript -->
     <script src="template/js/creative.min.js"></script>
-    
+ 
     <script src="template/vendor/formvalidation/dist/js/formValidation.min.js"></script>
 	<script src="template/vendor/formvalidation/dist/js/framework/bootstrap.min.js"></script>   
 	<script src="template/js/jquery.bootstrap.wizard.min.js"></script>
-	
-	<script src="js/validateAltaInscripcion.js" ></script>
+    <script src="js/validateAltaInscripcion.js" ></script>
 	<script src="js/altaInscripcion.js" ></script>
-	<script src="template/vendor/bootstrap/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-	
-
 </body>
-
 </html>

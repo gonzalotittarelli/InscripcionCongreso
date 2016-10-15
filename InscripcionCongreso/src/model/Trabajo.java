@@ -2,6 +2,8 @@ package model;
 
 import java.io.Serializable;
 import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 import org.hibernate.annotations.Type;
 
 @Entity
@@ -27,11 +30,11 @@ public class Trabajo implements Serializable{
 	@Column(name = "TITULO")
 	private String titulo;
 	
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="AUTOR_FK",referencedColumnName="ID_AUTOR")
 	private Autor autor;
 	
-	@OneToMany(mappedBy="trabajo")
+	@OneToMany(cascade = {CascadeType.ALL}, mappedBy="trabajo")
 	private Collection<AutorSecundario> autoresSecundarios;
 	
 	@Column(name = "RESUMEN")
@@ -49,12 +52,27 @@ public class Trabajo implements Serializable{
 	@Column(name = "APROBADO")
 	private Boolean aprobado = false;
 	
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="EXPOSICION_FK", referencedColumnName="ID_EXPOSICION", nullable=true)
 	private Exposicion exposicion;
 	
 	public Trabajo(){
 		
+	}
+	
+	public Trabajo(String titulo, Autor autor,
+			Collection<AutorSecundario> autoresSecundarios, String resumen,
+			Temas tema, TiposPresentacion tipoPresentacion, Boolean aprobado,
+			Exposicion exposicion) {
+		super();
+		this.titulo = titulo;
+		this.autor = autor;
+		this.autoresSecundarios = autoresSecundarios;
+		this.resumen = resumen;
+		this.tema = tema;
+		this.tipoPresentacion = tipoPresentacion;
+		this.aprobado = aprobado;
+		this.exposicion = exposicion;
 	}
 
 	public Long getId() {

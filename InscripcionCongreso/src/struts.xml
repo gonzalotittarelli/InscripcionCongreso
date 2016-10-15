@@ -15,8 +15,8 @@
 			<result name="success" type="tiles">inicio</result>
 		</action>
 		<action name="guardarInscripcion" method="guardar" class="inscripcionAction">
-			<result name="success" type="tiles">exito</result>
-			<result name="input" type="tiles">error</result>
+			<result name="success" type="tiles">inicio</result>
+			<result name="input" type="tiles">inicio</result>
 		</action>
 	</package>
 </struts>

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,12 +28,25 @@ public class AutorSecundario implements Serializable{
 	@Column(name = "APELLIDO", nullable = false)
 	private String apellido;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="TRABAJO_FK")
 	private Trabajo trabajo;
 	
 	public AutorSecundario(){
 		
+	}
+	
+	public AutorSecundario(String nombre, String apellido, Trabajo trabajo) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.trabajo = trabajo;
+	}
+	
+	public AutorSecundario(String nombre, String apellido) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
 	}
 
 	public Long getId() {

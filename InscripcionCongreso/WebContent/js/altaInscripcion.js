@@ -10,7 +10,7 @@ $(document).ready(function() {
 		var apellido = ($("#apellido_secundario").val()).toLowerCase();
 		var clase = "secundario_"+i;
 		i++;
-		$("#secundarios ul").append('<li role="presentation" class="'+clase+'" style="font-size: 16px;"><input type="hidden" class="'+clase+'" value="'+nombre+' '+apellido+'" /><a href="javascript: void(0);">'+nombre+' '+apellido+' <i class="fa fa-minus"></i></a></li>');
+		$("#secundarios ul").append('<li role="presentation" class="'+clase+'" style="font-size: 16px;"><input type="hidden" class="'+clase+'" value="'+nombre+'/'+apellido+'" /><a href="javascript: void(0);">'+nombre+' '+apellido+' <i class="fa fa-minus"></i></a></li>');
 		$("#nombre_secundario").val("");
 		$("#apellido_secundario").val("");
 		$("."+clase).on("click", function() {

@@ -34,6 +34,15 @@ public class Autor implements Serializable{
 
 	}
 
+	public Autor(String nombre, String apellido, String correo,
+			String correo_gmail) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.correo = correo;
+		this.correo_gmail = correo_gmail;
+	}
+
 	public Long getId() {
 		return id;
 	}

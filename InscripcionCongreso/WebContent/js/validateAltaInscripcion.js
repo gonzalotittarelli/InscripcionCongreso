@@ -62,13 +62,15 @@ function resumen(){
 	$("#cNombre").html($("#nombre").val());
 	$("#cApellido").html($("#apellido").val());
 	$("#cCorreoPersonal").html($("#correo").val());
-	$("#cCorreoGmail").html($("#correo_gmail").val()+"@gmail.com");
+	$("#cCorreoGmail").html($("#correo_gmail").val());
 	$("#cTitulo").html($("#titulo_trabajo").val());
 	$("#cTema").html($("#tema_trabajo option:selected" ).text());
 	$("#cPresentacion").html($("#tipo_presentacion option:selected" ).text());
 	$("#cResumen").html(jQuery("textarea#resumen").val());
 	$("#secundarios ul li input").each(function(i){
-		$("#cAutoresSecundarios").append('<li role="presentation" style="font-size: 16px;"><a href="javascript: void(0); style="text-transform:lowercase">'+$(this).val()+'</a></li>');
+		var str = $(this).val();
+		var res = str.split("/");
+		$("#cAutoresSecundarios").append('<li role="presentation" style="font-size: 16px;"><a href="javascript: void(0); style="text-transform:lowercase">'+res[0]+' '+res[1]+'</a></li>');
 	});
 }
 
@@ -82,11 +84,37 @@ function clean(){
 	});
 	$("#nombre").val(nombre);
 	$("#apellido").val(apellido);
-	$("#correo_gmail").val(correo_gmail+"@gmail.com");
+	$("#correo_gmail").val(correo_gmail);
 	$("#titulo_trabajo").val(titulo_trabajo);
 }
 
+
 $(document).ready(function() {
+	
+	var stack_topleft = {"dir1": "down", "dir2": "right", "push": "top"};
+
+	if($('#success').length){
+		new PNotify({
+			title: "Trabajo enviado",
+	        text: $("#success").val(),
+	        type: "success",
+	        styling: 'bootstrap3',
+	        addclass: "stack-topleft",
+	        stack: stack_topleft
+	    });
+	}
+	
+	if($('#error').length){
+		new PNotify({
+			title: "Error",
+	        text: "Ha ocurrido algún error, verifique la información ingresada",
+	        type: "error",
+	        styling: 'bootstrap3',
+	        addclass: "stack-topleft",
+	        stack: stack_topleft
+	    });
+	}
+	
 	$("textarea").textareaCounter({ limit: 200 });
 	
 	$('#tema_trabajo').on('change', function(e) {
@@ -131,13 +159,17 @@ $(document).ready(function() {
                     validators: {
                         notEmpty: {
                         },
-                        emailAddress: {
+                        regexp:{
+                        	regexp: /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i
                         }
                     }
                 },
                 correo_gmail: {
                     validators: {
                         notEmpty: {
+                        },
+                        regexp:{
+                        	regexp: /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*(@gmail.com)$/
                         }
                     }
                 },
