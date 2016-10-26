@@ -1,15 +1,14 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Date;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name="EXPOSICION")
@@ -21,16 +20,11 @@ public class Exposicion implements Serializable{
 	@GeneratedValue
 	@Column(name = "ID_EXPOSICION")
 	private Long id;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="EXPOSICION_DISPONIBLE_FK",referencedColumnName="ID_EXPOSICION_DISPONIBLE")
+	private ExposicionesDisponibles exposicionesDisponibles;
 
-	@Column(name = "FECHA")
-	@Type(type="date")
-	private Date fecha;
-	
-	@Column(name = "HORA")
-	private String hora;
-	
-	@Column(name = "LUGAR")
-	private String lugar;
 	
 	public Exposicion(){
 		
@@ -44,28 +38,13 @@ public class Exposicion implements Serializable{
 		this.id = id;
 	}
 
-	public Date getFecha() {
-		return fecha;
+	public ExposicionesDisponibles getExposicionesDisponibles() {
+		return exposicionesDisponibles;
 	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setExposicionesDisponibles(ExposicionesDisponibles exposicionesDisponibles) {
+		this.exposicionesDisponibles = exposicionesDisponibles;
 	}
 
-	public String getHora() {
-		return hora;
-	}
-
-	public void setHora(String hora) {
-		this.hora = hora;
-	}
-
-	public String getLugar() {
-		return lugar;
-	}
-
-	public void setLugar(String lugar) {
-		this.lugar = lugar;
-	}
 
 }

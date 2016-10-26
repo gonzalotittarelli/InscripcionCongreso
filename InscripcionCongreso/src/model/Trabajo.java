@@ -11,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -55,6 +56,10 @@ public class Trabajo implements Serializable{
 	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="EXPOSICION_FK", referencedColumnName="ID_EXPOSICION", nullable=true)
 	private Exposicion exposicion;
+	
+	@ManyToOne(optional=false)
+	@JoinColumn(name="ESTADO_TRABAJO_FK",referencedColumnName="ID_ESTADO_TRABAJO")
+	private EstadoTrabajo estadoTrabajo;
 	
 	public Trabajo(){
 		

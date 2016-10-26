@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.Autor;
 import model.AutorSecundario;
+import model.Exposicion;
 import model.Temas;
 import model.TiposPresentacion;
 import model.Trabajo;
@@ -48,7 +49,7 @@ public class TrabajoService {
 		
 		List<AutorSecundario> autores = null;
 		
-		Trabajo trabajo = new Trabajo(titulo_trabajo, autor, autores, resumen, Temas.valueOf(tema_trabajo), TiposPresentacion.valueOf(tipo_presentacion), false, null);
+		Trabajo trabajo = new Trabajo(titulo_trabajo, autor, autores, resumen, Temas.valueOf(tema_trabajo), TiposPresentacion.valueOf(tipo_presentacion), false, new Exposicion());
 		
 		if(apellidos_nombres_secundarios!=null){
 			autores = this.autoresSecundarios(apellidos_nombres_secundarios, trabajo);
