@@ -25,18 +25,34 @@
 	<bean id="trabajoDAO" class="dao.TrabajoDAOHiberJPA"/>
 	<bean id="autorDAO" class="dao.AutorDAOHiberJPA"/>
 	<bean id="autorSecundarioDAO" class="dao.AutorSecundarioDAOHiberJPA"/>
+	<bean id="estadoTrabajoDAO" class="dao.EstadoTrabajoDAOHiberJPA" />
+	<bean id="exposicionDisponibleDAO" class="dao.ExposicionDisponibleDAOHiberJPA" />
 	
 	<bean id="autorService" class="service.AutorService" scope="prototype">
 		<property name="autorDAO" ref="autorDAO"/>
 	</bean>
-		
+	
 	<bean id="autorSecundarioService" class="service.AutorSecundarioService" scope="prototype">
 		<property name="autorSecundarioDAO" ref="autorSecundarioDAO"/>
+	</bean>
+
+	<bean id="estadoTrabajoService" class="service.EstadoTrabajoService" scope="prototype">
+		<property name="estadoTrabajoDAO" ref="estadoTrabajoDAO" />
 	</bean>
 
 	<bean id="trabajoService" class="service.TrabajoService" scope="prototype">
 		<property name="trabajoDAO" ref="trabajoDAO"/>
 		<property name="autorService" ref="autorService"/>
+		<property name="estadoTrabajoService" ref="estadoTrabajoService"/>
+	</bean>
+	
+	<bean id="initService" class="service.InitService" scope="prototype">
+		<property name="estadoTrabajoDAO" ref="estadoTrabajoDAO" />
+		<property name="exposicionDisponibleDAO" ref="exposicionDisponibleDAO" />
+	</bean>
+	
+	<bean id="initAction" class="actions.InitAction" scope="prototype">
+		<property name="initService" ref="initService" />
 	</bean>
 
 	<bean id="inicioAction" scope="prototype"/>

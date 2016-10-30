@@ -86,10 +86,14 @@
         <div class="header-content">
             <div class="header-content-inner">
             	<s:if test="hasActionMessages()">
+            		<input type="hidden" id="hola" value="hola" />
             		<input type="hidden" id="success" value="<s:property value="actionMessages.get(0)"/>" />
 				</s:if>
 				<s:if test="fieldErrors.size() > 0">
-					<input type="hidden" id="error" value="si" />
+					<input type="hidden" id="errorFields" />
+				</s:if>
+				<s:if test="hasActionErrors()">
+					<input type="hidden" id="errorAction" value="<s:property value="actionErrors.get(0)"/>"/>
 				</s:if>
                 <h1 id="homeHeading">Congreso de Tecnología e Informática</h1>
                 <hr>

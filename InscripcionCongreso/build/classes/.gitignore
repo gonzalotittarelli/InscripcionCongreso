@@ -1,7 +1,4 @@
-/META-INF/
-/actions/
-/beans.xml
-/dao/
 /model/
 /service/
-/struts.xml
+/actions/
+/dao/

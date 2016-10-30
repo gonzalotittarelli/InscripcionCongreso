@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 import service.TrabajoService;
 import model.Temas;
 import model.TiposPresentacion;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 public class InscripcionAction extends ActionSupport {
@@ -20,10 +19,15 @@ public class InscripcionAction extends ActionSupport {
 	}
 
 	public String guardar() {
-		this.trabajoService.guardarTrabajo(nombre,
-				apellido, correo, correo_gmail, titulo_trabajo, tema_trabajo,
-				tipo_presentacion, apellidos_nombres_secundarios, resumen);
-		addActionMessage("A la brevedad se avisara por correo el resultado de su evaluación");
+		try{
+			this.trabajoService.guardarTrabajo(nombre,
+					apellido, correo, correo_gmail, titulo_trabajo, tema_trabajo,
+					tipo_presentacion, apellidos_nombres_secundarios, resumen);
+			addActionMessage("A la brevedad se avisara por correo el resultado de su evaluación");
+		}catch(Exception e){
+			addActionError("Ha habido un error en la inscripcion");
+			return ERROR;
+		}
 		return SUCCESS;
 	}
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.Autor;
 import model.AutorSecundario;
+import model.EstadoTrabajo;
 import model.Exposicion;
 import model.Temas;
 import model.TiposPresentacion;
@@ -20,6 +21,7 @@ public class TrabajoService {
 	
 	private TrabajoDAOHiberJPA trabajoDAO;
 	private AutorService autorService;
+	private EstadoTrabajoService estadoTrabajoService;
 
 	/**
 	 * Este metodo se encarga de persistir el trabajo. Verifica si el autor ya existe y se lo asigna al trabajo. De lo contrario crea uno nuevo.
@@ -41,7 +43,7 @@ public class TrabajoService {
 	public void guardarTrabajo(String nombre, String apellido,
 			String correo, String correo_gmail, String titulo_trabajo,
 			String tema_trabajo, String tipo_presentacion,
-			String apellidos_nombres_secundarios, String resumen) {
+			String apellidos_nombres_secundarios, String resumen) throws Exception{
 		
 		Autor autor = this.autorService.existeAutor(nombre, apellido, correo_gmail);
 		if(autor == null)
@@ -49,7 +51,12 @@ public class TrabajoService {
 		
 		List<AutorSecundario> autores = null;
 		
-		Trabajo trabajo = new Trabajo(titulo_trabajo, autor, autores, resumen, Temas.valueOf(tema_trabajo), TiposPresentacion.valueOf(tipo_presentacion), false, new Exposicion());
+		EstadoTrabajo estado = this.estadoTrabajoService.existeEstado("INSCRIPTO");
+		
+		if(estado == null)
+			throw new Exception();
+		
+		Trabajo trabajo = new Trabajo(titulo_trabajo, autor, autores, resumen, Temas.valueOf(tema_trabajo), TiposPresentacion.valueOf(tipo_presentacion), new Exposicion(), estado);
 		
 		if(apellidos_nombres_secundarios!=null){
 			autores = this.autoresSecundarios(apellidos_nombres_secundarios, trabajo);
@@ -97,6 +104,14 @@ public class TrabajoService {
 
 	public void setAutorService(AutorService autorService) {
 		this.autorService = autorService;
+	}
+
+	public EstadoTrabajoService getEstadoTrabajoService() {
+		return estadoTrabajoService;
+	}
+
+	public void setEstadoTrabajoService(EstadoTrabajoService estadoTrabajoService) {
+		this.estadoTrabajoService = estadoTrabajoService;
 	}
 
 }

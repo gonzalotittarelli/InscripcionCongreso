@@ -8,4 +8,6 @@ los cuales intervienen mediante la exposición de posters o el dictado de confer
 
 Como primer paso se deberá crear una base de datos con el nombre inscripcion_congreso(tener en cuenta que en la configuración del archivo META-INF/persistence.xml el nombre de usuario para la base es root y la contraseña es vacia).
 
+Luego se debe invocar al action que iniciliza la base de datos. http://localhost:8080/InscripcionCongreso/inicializar
+
 Autores: Gonzalo Tittarelli y Julian Da Costa Faro

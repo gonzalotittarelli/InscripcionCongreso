@@ -22,12 +22,12 @@ public class Exposicion implements Serializable{
 	private Long id;
 	
 	@OneToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name="EXPOSICION_DISPONIBLE_FK",referencedColumnName="ID_EXPOSICION_DISPONIBLE")
-	private ExposicionesDisponibles exposicionesDisponibles;
+	@JoinColumn(name="EXPOSICION_DISPONIBLE_FK",referencedColumnName="ID_EXPOSICION_DISPONIBLE", nullable=true)
+	private ExposicionDisponible exposicion;
 
 	
 	public Exposicion(){
-		
+		this.exposicion = null;
 	}
 
 	public Long getId() {
@@ -38,13 +38,12 @@ public class Exposicion implements Serializable{
 		this.id = id;
 	}
 
-	public ExposicionesDisponibles getExposicionesDisponibles() {
-		return exposicionesDisponibles;
+	public ExposicionDisponible getExposicion() {
+		return exposicion;
 	}
 
-	public void setExposicionesDisponibles(ExposicionesDisponibles exposicionesDisponibles) {
-		this.exposicionesDisponibles = exposicionesDisponibles;
+	public void setExposicion(ExposicionDisponible exposicion) {
+		this.exposicion = exposicion;
 	}
-
 
 }

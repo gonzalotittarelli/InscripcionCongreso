@@ -31,6 +31,9 @@ public class Trabajo implements Serializable{
 	@Column(name = "TITULO")
 	private String titulo;
 	
+	@Column(name = "ID_GOOGLE_DRIVE", nullable=true)
+	private String idGoogleDrive;
+	
 	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="AUTOR_FK",referencedColumnName="ID_AUTOR")
 	private Autor autor;
@@ -50,9 +53,6 @@ public class Trabajo implements Serializable{
 	@Column(name = "TIPO_PRESENTACION")
 	private TiposPresentacion tipoPresentacion;
 	
-	@Column(name = "APROBADO")
-	private Boolean aprobado = false;
-	
 	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="EXPOSICION_FK", referencedColumnName="ID_EXPOSICION", nullable=true)
 	private Exposicion exposicion;
@@ -67,8 +67,7 @@ public class Trabajo implements Serializable{
 	
 	public Trabajo(String titulo, Autor autor,
 			Collection<AutorSecundario> autoresSecundarios, String resumen,
-			Temas tema, TiposPresentacion tipoPresentacion, Boolean aprobado,
-			Exposicion exposicion) {
+			Temas tema, TiposPresentacion tipoPresentacion, Exposicion exposicion, EstadoTrabajo estadoTrabajo) {
 		super();
 		this.titulo = titulo;
 		this.autor = autor;
@@ -76,8 +75,9 @@ public class Trabajo implements Serializable{
 		this.resumen = resumen;
 		this.tema = tema;
 		this.tipoPresentacion = tipoPresentacion;
-		this.aprobado = aprobado;
 		this.exposicion = exposicion;
+		this.estadoTrabajo = estadoTrabajo;
+		this.idGoogleDrive = null;
 	}
 
 	public Long getId() {
@@ -136,20 +136,28 @@ public class Trabajo implements Serializable{
 		this.tipoPresentacion = tipoPresentacion;
 	}
 
-	public Boolean getAprobado() {
-		return aprobado;
-	}
-
-	public void setAprobado(Boolean aprobado) {
-		this.aprobado = aprobado;
-	}
-
 	public Exposicion getExposicion() {
 		return exposicion;
 	}
 
 	public void setExposicion(Exposicion exposicion) {
 		this.exposicion = exposicion;
+	}
+
+	public String getIdGoogleDrive() {
+		return idGoogleDrive;
+	}
+
+	public void setIdGoogleDrive(String idGoogleDrive) {
+		this.idGoogleDrive = idGoogleDrive;
+	}
+
+	public EstadoTrabajo getEstadoTrabajo() {
+		return estadoTrabajo;
+	}
+
+	public void setEstadoTrabajo(EstadoTrabajo estadoTrabajo) {
+		this.estadoTrabajo = estadoTrabajo;
 	}
 
 }

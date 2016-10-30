@@ -104,10 +104,21 @@ $(document).ready(function() {
 	    });
 	}
 	
-	if($('#error').length){
+	if($('#errorFields').length){
 		new PNotify({
 			title: "Error",
 	        text: "Ha ocurrido algún error, verifique la información ingresada",
+	        type: "error",
+	        styling: 'bootstrap3',
+	        addclass: "stack-topleft",
+	        stack: stack_topleft
+	    });
+	}
+	
+	if($('#errorAction').length){
+		new PNotify({
+			title: "Error",
+	        text: $("#errorAction").val(),
 	        type: "error",
 	        styling: 'bootstrap3',
 	        addclass: "stack-topleft",

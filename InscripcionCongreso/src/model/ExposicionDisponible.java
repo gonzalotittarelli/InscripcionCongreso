@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +13,7 @@ import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name="EXPOSICION_DISPONIBLE")
-public class ExposicionesDisponibles implements Serializable{
+public class ExposicionDisponible implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id	
@@ -33,8 +34,16 @@ public class ExposicionesDisponibles implements Serializable{
 	@Column(name = "ASIGNADA")
 	private Boolean asignada;
 	
-	public ExposicionesDisponibles(){
+	public ExposicionDisponible(){
+		super();
 		this.asignada = false;
+	}
+
+	public ExposicionDisponible(Date fecha, String hora, String lugar) {
+		this();
+		this.fecha = fecha;
+		this.hora = hora;
+		this.lugar = lugar;
 	}
 
 	public Long getId() {

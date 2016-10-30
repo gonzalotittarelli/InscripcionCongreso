@@ -11,11 +11,14 @@
 		<global-results>
 			<result name="error" type="tiles">error</result>
 		</global-results>
+		<action name="inicializar" class="initAction">
+			<result name="success" type="tiles">inicio</result>
+		</action>
 		<action name="inicio">
 			<result name="success" type="tiles">inicio</result>
 		</action>
 		<action name="guardarInscripcion" method="guardar" class="inscripcionAction">
-			<result name="success" type="tiles">inicio</result>
+			<result name="success" type="tiles">exito</result>
 			<result name="input" type="tiles">inicio</result>
 		</action>
 	</package>
