@@ -14,6 +14,9 @@
 		<action name="inicializar" class="initAction">
 			<result name="success" type="tiles">inicio</result>
 		</action>
+		<action name="cargar" class="cargarInscripciones">
+			<result name="success" type="tiles">inicio</result>
+		</action>
 		<action name="inicio">
 			<result name="success" type="tiles">inicio</result>
 		</action>

@@ -54,6 +54,10 @@
 	<bean id="initAction" class="actions.InitAction" scope="prototype">
 		<property name="initService" ref="initService" />
 	</bean>
+	
+	<bean id="cargarInscripciones" class="actions.CargarInscripcionesAction" scope="prototype">
+		<property name="trabajoService" ref="trabajoService" />
+	</bean>
 
 	<bean id="inicioAction" scope="prototype"/>
 	
