@@ -32,7 +32,7 @@ public class InitService {
 		Calendar noviembre24 = new GregorianCalendar(2016,10,24);
 		Calendar noviembre25 = new GregorianCalendar(2016,10,25);
 		
-		String mañana = "8:00";
+		String mañana = "08:00";
 		String mediodia = "12:00";
 		String tarde = "16:00";
 		
